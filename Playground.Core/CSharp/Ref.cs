@@ -22,9 +22,4 @@ public static class Ref
 
         throw new InvalidOperationException("Element not found");
     }
-
-    public static int Test1()
-    {
-        return 1;
-    }
 }

@@ -23,18 +23,4 @@ public class RefTests
         var expectedResult = new[] { 1, 2, 10, 4, 5 };
         numbers.Should().BeEquivalentTo(expectedResult);
     }
-
-    [Fact]
-    public void Test1()
-    {
-        var result = Ref.Test1();
-        result.Should().Be(1);
-    }
-
-    [Fact]
-    public void Test2()
-    {
-        var result = new Test().Test2();
-        result.Should().Be(2);
-    }
 }

@@ -10,6 +10,4 @@ This repository contains my coding practice and learning projects.
 - [ ] CSharp
   - [x] Ref locals & returns
   - [x] Ranges and indices
-
-## Todos
-- [ ] Fix SonarCloud code coverage
+  - [x] With expression

@@ -11,3 +11,5 @@ This repository contains my coding practice and learning projects.
   - [x] Ref locals & returns
   - [x] Ranges and indices
   - [x] With expression
+- [ ] Cache
+  - [x] Memory cache

@@ -8,7 +8,7 @@ public class GymTrainingRecommendationService(ILlmFacade llmFacade) : IGymTraini
     public async Task<string> GetTrainingPlanAsync(GetGymTrainingPlanRequest request)
     {
         var prompt = $"I am a {request.FitnessLevel.ToString()} lifter " +
-                     $"with a goal of building {request.FitnessLevel.ToString()}." +
+                     $"with a goal of building {request.TrainingGoal.ToString()}." +
                      $"I have {request.TimeCommitmentInMinute} minute today to work out." +
                      $"Please recommend suitable exercises for me.";
 

@@ -4,3 +4,9 @@
     build:
       context: .
       dockerfile: ServiceHost/Dockerfile
+
+  playground.api.servicehost:
+    image: playground.api.servicehost
+    build:
+      context: .
+      dockerfile: Playground.API.ServiceHost/Dockerfile

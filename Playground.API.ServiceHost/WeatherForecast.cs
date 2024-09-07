@@ -1,4 +1,4 @@
-namespace ServiceHost;
+namespace Playground.API.ServiceHost;
 
 public class WeatherForecast
 {

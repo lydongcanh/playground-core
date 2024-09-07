@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace ServiceHost.Controllers;
+namespace Playground.API.ServiceHost.Controllers;
 
 [ApiController]
 [Route("[controller]")]

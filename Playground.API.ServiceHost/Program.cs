@@ -13,7 +13,19 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<ILlmFacade, LlmFacade>();
 builder.Services.AddSingleton<IGymTrainingRecommendationService, GymTrainingRecommendationService>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
+
+app.UseCors("AllowAll");
 
 // Configure the HTTP request pipeline.
 app.UseSwagger();

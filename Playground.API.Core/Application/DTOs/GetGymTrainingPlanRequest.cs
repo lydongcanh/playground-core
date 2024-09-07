@@ -7,4 +7,5 @@ public record GetGymTrainingPlanRequest
     public FitnessLevel FitnessLevel { get; set; }
     public TrainingGoal TrainingGoal { get; set; }
     public int TimeCommitmentInMinute { get; set; }
+    public string AdditionalContext { get; set; }
 }

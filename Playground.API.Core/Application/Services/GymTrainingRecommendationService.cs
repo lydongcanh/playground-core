@@ -10,7 +10,7 @@ public class GymTrainingRecommendationService(ILlmFacade llmFacade) : IGymTraini
         var prompt = $"I am a {request.FitnessLevel.ToString()} person " +
                      $"with a goal of building {request.TrainingGoal.ToString()}." +
                      $"I have {request.TimeCommitmentInMinute} minute today to work out." +
-                     (string.IsNullOrWhiteSpace(request.AdditionalContext) ? $"{request.AdditionalContext}." : "") +
+                     (!string.IsNullOrWhiteSpace(request.AdditionalContext) ? $"{request.AdditionalContext}." : "") +
                      "Please recommend suitable exercises for me.";
 
         return await llmFacade.GenerateRawResponseAsync(prompt);

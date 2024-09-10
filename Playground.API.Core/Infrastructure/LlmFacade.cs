@@ -9,7 +9,7 @@ public class LlmFacade : ILlmFacade
     {   
         var model = new GenerativeModel();
         var response = await model.GenerateContent(prompt);
-
+        
         return response.Text ?? "";
     }
 }

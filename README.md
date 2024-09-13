@@ -7,9 +7,19 @@ This repository contains my coding practice and learning projects.
 
 ## Contents
 
-- [ ] CSharp
+### CSharp
   - [x] Ref locals & returns
   - [x] Ranges and indices
   - [x] With expression
+
+### Terraform
+- [x] HashiCorp Cloud backend
+  - [x] Neon tech (database)
+
+### AI
+- [x] Google Gemini
+
+### Others
+- [x] ASP.NET Server
 - [ ] Cache
   - [x] Memory cache

@@ -27,3 +27,5 @@ jobs:
         working-directory: terraform
         env:
           HCP_TOKEN: ${{ secrets.HCP_TOKEN }}
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          

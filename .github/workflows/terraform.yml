@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - master
-
-env:
-  NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
   
 jobs:
   terraform:
@@ -32,4 +29,5 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve
         working-directory: terraform
-
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}

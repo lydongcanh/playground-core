@@ -4,8 +4,8 @@ namespace Playground.API.Core.Application.DTOs;
 
 public record GetGymTrainingPlanRequest
 {
-    public FitnessLevel FitnessLevel { get; set; }
-    public TrainingGoal TrainingGoal { get; set; }
-    public int TimeCommitmentInMinute { get; set; }
-    public string AdditionalContext { get; set; }
+    public required FitnessLevel FitnessLevel { get; set; }
+    public required TrainingGoal TrainingGoal { get; set; }
+    public required int TimeCommitmentInMinute { get; set; }
+    public string? AdditionalContext { get; set; }
 }

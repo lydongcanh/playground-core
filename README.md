@@ -10,7 +10,8 @@ This repository contains my coding practice and learning projects.
 ### CSharp
   - [x] Ref locals & returns
   - [x] Ranges and indices
-  - [x] With expression
+  - [x] `with` expression
+  - [x] `required`
 
 ### Terraform
 - [x] HashiCorp Cloud backend

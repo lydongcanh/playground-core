@@ -12,6 +12,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<ILlmFacade, LlmFacade>();
 builder.Services.AddSingleton<IGymTrainingRecommendationService, GymTrainingRecommendationService>();
+builder.Services.AddSingleton<IFileService, FileService>();
 
 builder.Services.AddCors(options =>
 {

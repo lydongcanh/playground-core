@@ -9,7 +9,7 @@ public class FileService(ILlmFacade llmFacade) : IFileService
     public async Task<GenerateDummyFileResponse> GenerateDummyFileAsync(GenerateDummyFileRequest request, CancellationToken cancellationToken)
     {
         var fileName = $"{request.FileName}.txt";
-        var generateDummyFileContentPrompt = $"Generate text file content based on the file name: {request.FileName}";
+        var generateDummyFileContentPrompt = $"Generate a creative content for the file: {fileName}. No need for further explanation.";
         var fileContent = await llmFacade.GenerateRawResponseAsync(generateDummyFileContentPrompt);
         
         return new GenerateDummyFileResponse

@@ -18,7 +18,6 @@ builder.Services.AddSwaggerGen();
 
 // Application service.
 builder.Services.AddScoped<IGymTrainingRecommendationService, GymTrainingRecommendationService>();
-builder.Services.AddScoped<IPassportService, PassportService>();
 builder.Services.AddScoped<ILlmFacade, LlmFacade>();
 builder.Services.AddScoped<IDataRoomService, DataRoomService>();
 

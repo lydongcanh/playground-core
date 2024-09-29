@@ -73,6 +73,77 @@ public class DataRoomService(ILlmFacade llmFacade, AppDbContext dbContext) : IDa
         
         return file.Id;
     }
+
+    public async Task<GetDataRoomResponse> GetDataRoomAsync(Guid id, CancellationToken cancellationToken)
+    {
+        // Load the DataRoom with its immediate Folders and Files
+        var dataRoom = await dbContext.DataRooms
+            .Include(dr => dr.Folders)
+            .ThenInclude(f => f.Files)
+            .FirstOrDefaultAsync(dr => dr.Id == id, cancellationToken);
+
+        if (dataRoom == default)
+        {
+            // TODO: Create not found exception
+            throw new Exception();
+        }
+
+        // Recursively load all nested folders
+        foreach (var folder in dataRoom.Folders)
+        {
+            await LoadNestedFolders(folder, cancellationToken);
+        }
+
+        return ToGetDataRoomResponse(dataRoom);
+    }
+    
+    private async Task LoadNestedFolders(Folder folder, CancellationToken cancellationToken)
+    {
+        // Load immediate children folders with their files
+        var childFolders = await dbContext.Folders
+            .Include(f => f.Files)
+            .Where(f => f.ParentFolderId == folder.Id)
+            .ToListAsync(cancellationToken);
+
+        folder.ChildrenFolders = childFolders;
+
+        // Recursively load nested folders for each child
+        foreach (var childFolder in childFolders)
+        {
+            await LoadNestedFolders(childFolder, cancellationToken);
+        }
+    }
+
+    private static GetDataRoomResponse ToGetDataRoomResponse(DataRoom dataRoom)
+    {
+        return new GetDataRoomResponse
+        {
+            Id = dataRoom.Id,
+            Name = dataRoom.Name,
+            Folders = dataRoom.Folders.Where(f => f.IsRoot).Select(ToGetFolderResponse).ToList()
+        };
+    }
+
+    private static GetFolderResponse ToGetFolderResponse(Folder folder)
+    {
+        return new GetFolderResponse
+        {
+            Id = folder.Id,
+            Name = folder.Name,
+            ChildrenFolders = folder.ChildrenFolders.Select(ToGetFolderResponse).ToList(),
+            Files = folder.Files.Select(ToGetFileResponse).ToList()
+        };
+    }
+
+    private static GetFileResponse ToGetFileResponse(File file)
+    {
+        return new GetFileResponse
+        {
+            Id = file.Id,
+            Name = file.Name,
+            Base64Content = file.Base64Content
+        };
+    }
     
     public async Task<GenerateDummyFileResponse> GenerateDummyFileAsync(GenerateDummyFileRequest request, CancellationToken cancellationToken)
     {

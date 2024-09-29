@@ -31,6 +31,13 @@ public class DataRoomsController(IDataRoomService dataRoomService) : ControllerB
         var id = await dataRoomService.CreateFileAsync(dataRoomId, folderId, request, cancellationToken);
         return Created(string.Empty, new { id });
     }
+
+    [HttpGet]
+    [Route("{id:guid}")]
+    public async Task<IActionResult> GetDataRoomAsync(Guid id, CancellationToken cancellationToken)
+    {
+        return Ok(await dataRoomService.GetDataRoomAsync(id, cancellationToken));
+    }
     
     [HttpPost]
     [Route("dummy")]
